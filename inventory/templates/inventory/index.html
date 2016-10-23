@@ -1,0 +1,9 @@
+{% if all_folders %}
+    <ul>
+    {% for folder in all_folders %}
+        <li><a href="/inventory/{{ folder.id }}/">{{ folder.folder_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No folders are available.</p>
+{% endif %}
