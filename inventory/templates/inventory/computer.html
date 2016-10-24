@@ -5,14 +5,17 @@
    Manufacturer: {{ computer.manufacturer }}<br>
    Comment: {{ computer.comments }}</p>
 
-<form action="update">
+<form action="edit">
     {% csrf_token %}
-    <input type="submit" value="Update computer" />
+    <input type="submit" value="Edit computer" />
 </form>
 
-<button onclick="goBack()">Back</button>
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
+<form action="delete_computer">
+    {% csrf_token %}
+    <input type="submit" value="Delete computer" />
+</form>
+
+<form action="../">
+    {% csrf_token %}
+    <input type="submit" value="Back" />
+</form>

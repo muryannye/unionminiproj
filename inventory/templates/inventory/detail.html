@@ -13,9 +13,12 @@
     <input type="submit" value="Add another computer" />
 </form>
 
-<button onclick="goBack()">Back</button>
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
+<form action="delete_folder">
+    {% csrf_token %}
+    <input type="submit" value="Delete folder" />
+</form>
+
+<form action="../">
+    {% csrf_token %}
+    <input type="submit" value="Back" />
+</form>

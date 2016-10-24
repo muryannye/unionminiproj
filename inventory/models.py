@@ -6,7 +6,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class Folder(models.Model):
-    folder_name = models.CharField(max_length=200)
+    folder_name = models.CharField(max_length=200, unique=True)
     def __str__(self):
         return self.folder_name
 

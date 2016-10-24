@@ -12,7 +12,7 @@ class FolderForm(forms.ModelForm):
         model = Folder
         fields = ('folder_name',)
 
-class UpdateComputer(forms.ModelForm):
+class EditComputer(forms.ModelForm):
     comments = forms.CharField(required=False)
     class Meta:
         model = Computer
