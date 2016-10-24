@@ -15,6 +15,6 @@ class Computer(models.Model):
     folder = models.ForeignKey(Folder, on_delete=models.CASCADE, null=True)
     serial_number = models.CharField(max_length=100)
     manufacturer =  models.CharField(max_length=250)
-    comments = models.TextField(max_length=300)
+    comments = models.TextField(max_length=300, default="")
     def __str__(self):
         return self.serial_number

@@ -1,13 +1,21 @@
 <h1>{{ folder.folder_name }}</h1>
-
+<h3>Serial Numbers</h3>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <ul>
 {% for computer in folder.computer_set.all %}
-    <li>{{ computer.serial_number }}</li>
+    <li><a href="{% url 'inventory:computer' folder.id computer.id %}">{{ computer.serial_number }}</a></li>
 {% endfor %}
 </ul>
 
 <form action="add">
+    {% csrf_token %}
     <input type="submit" value="Add another computer" />
 </form>
+
+<button onclick="goBack()">Back</button>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

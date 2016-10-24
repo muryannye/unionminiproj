@@ -1,0 +1,18 @@
+<h1>{{ computer.serial_number }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p>Manufacturer: {{ computer.manufacturer }}</p>
+<p>Comment: {{ computer.comments }}</p>
+
+<form action="update">
+    {% csrf_token %}
+    <input type="submit" value="Update computer" />
+</form>
+
+<button onclick="goBack()">Back</button>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
