@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import ComputerForm, UpdateComputer
+from .forms import ComputerForm, UpdateComputer, FolderForm
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Folder, Computer
@@ -23,7 +23,7 @@ def computer(request, computer_id, folder_id):
     computer = get_object_or_404(Computer, pk=computer_id)
     return render(request, 'inventory/computer.html', {'computer': computer}, {'folder': folder})
 
-def add(request, folder_id):
+def add_computer(request, folder_id):
     if request.method == "POST":
         form = ComputerForm(request.POST)
         if form.is_valid():
@@ -34,7 +34,18 @@ def add(request, folder_id):
             return HttpResponseRedirect(url)
     else:
         form = ComputerForm()
-    return render(request, 'inventory/add.html', {'form': form})
+    return render(request, 'inventory/add_computer.html', {'form': form})
+
+def add_folder(request):
+    if request.method == "POST":
+        form = FolderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            url = "/inventory/"
+            return HttpResponseRedirect(url)
+    else:
+        form = FolderForm()
+    return render(request, 'inventory/add_folder.html', {'form': form})
 
 def update(request, computer_id, folder_id):
    comp = get_object_or_404(Computer,pk=computer_id)

@@ -9,3 +9,8 @@
 {% else %}
     <p>No folders are available.</p>
 {% endif %}
+
+<form action="add_folder">
+    {% csrf_token %}
+    <input type="submit" value="Add folder" />
+</form>
