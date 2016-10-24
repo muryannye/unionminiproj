@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from .forms import SubmitComputer
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
@@ -20,3 +20,7 @@ def detail(request, folder_id):
     except Folder.DoesNotExist:
         raise Http404("Folder does not exist")
     return render(request, 'inventory/detail.html', {'folder': folder})
+
+def add(request, folder_id):
+    form = SubmitComputer()
+    return render(request, 'inventory/add.html', {'form': form})
