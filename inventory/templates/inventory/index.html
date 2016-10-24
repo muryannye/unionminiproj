@@ -1,7 +1,9 @@
+<h1>Folders</h1>
+
 {% if all_folders %}
     <ul>
     {% for folder in all_folders %}
-        <li><a href="/inventory/{{ folder.id }}/">{{ folder.folder_name }}</a></li>
+        <li><a href="{% url 'inventory:detail' folder.id %}">{{ folder.folder_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

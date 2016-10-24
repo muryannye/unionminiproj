@@ -2,12 +2,12 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{% if all_folders %}
-    <ul>
-    {% for folder in all_folders %}
-        <li><a href="/inventory/{{ folder.id }}/">{{ folder.folder_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No folders are available.</p>
-{% endif %}
+<ul>
+{% for computer in folder.computer_set.all %}
+    <li>{{ computer.serial_number }}</li>
+{% endfor %}
+</ul>
+
+<form action="add">
+    <input type="submit" value="Add another computer" />
+</form>
